@@ -147,4 +147,4 @@ int IsWin(char board[ROW][COL], int row, int col)//≈–∂œ ‰”Æ
 	}
 	return 'C';
 
-}
+}//over
