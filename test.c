@@ -1,52 +1,4 @@
-
 #include"game.h"
-
-void menu()
-{//打印菜单界面
-	printf("*********************************\n");
-	printf("**********   1.play    **********\n");
-	printf("**********   0.exit    **********\n");
-	printf("*********************************\n");
-}
-void game()
-{
-	//游戏过程
-	
-	char board[ROW][COL];//创建棋盘数组
-	Initboard(board,ROW,COL);//初始化棋盘 棋子位置都为空格
-	DisplayBoard(board,ROW,COL);//打印棋盘
-	//下棋
-	char ret = 0;
-	while (1)
-	{
-		PlayerMove(board, ROW, COL);//玩家下棋
-		DisplayBoard(board, ROW, COL);//打印棋盘
-		ret=IsWin(board, ROW, COL);//判断输赢
-		if (ret != 'C')
-		{
-			break;
-		}
-		ComputerMove(board, ROW, COL);//电脑下棋
-		DisplayBoard(board, ROW, COL);//打印棋盘
-		ret=IsWin(board, ROW, COL);//判断输赢
-		if (ret != 'C')
-		{
-			break;
-		}
-	}
-	if (ret == '*')
-	{
-		printf("玩家赢\n");
-	}
-	else if (ret == '#')
-	{
-		printf("电脑赢\n");
-	}
-	else
-	{
-		printf("平局\n");
-	}
-}
 
 int main()
 {
@@ -60,16 +12,16 @@ int main()
 		{
 			case '1'://开始游戏
 				printf("三子棋\n");
-				game();//游戏过程
 				getchar();//清除缓存区
+				game();//游戏过程
 				break;
 			case '0'://退出游戏
-				printf("退出游戏\n");
 				getchar();
+				printf("退出游戏\n");
 				break;
 			default://输入其他东西时
-				printf("输入错误\n");
 				getchar();
+				printf("输入错误\n");
 				break;
 
 		}

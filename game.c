@@ -1,5 +1,52 @@
-
 #include"game.h"
+
+void menu()
+{//打印菜单界面
+	printf("*********************************\n");
+	printf("**********   1.play    **********\n");
+	printf("**********   0.exit    **********\n");
+	printf("*********************************\n");
+}
+
+void game()
+{
+	//游戏过程
+
+	char board[ROW][COL];//创建棋盘数组
+	Initboard(board, ROW, COL);//初始化棋盘 棋子位置都为空格
+	DisplayBoard(board, ROW, COL);//打印棋盘
+	//下棋
+	char ret = 0;
+	while (1)
+	{
+		PlayerMove(board, ROW, COL);//玩家下棋
+		DisplayBoard(board, ROW, COL);//打印棋盘
+		ret = IsWin(board, ROW, COL);//判断输赢
+		if (ret != 'C')
+		{
+			break;
+		}
+		ComputerMove(board, ROW, COL);//电脑下棋
+		DisplayBoard(board, ROW, COL);//打印棋盘
+		ret = IsWin(board, ROW, COL);//判断输赢
+		if (ret != 'C')
+		{
+			break;
+		}
+	}
+	if (ret == '*')
+	{
+		printf("玩家赢\n");
+	}
+	else if (ret == '#')
+	{
+		printf("电脑赢\n");
+	}
+	else
+	{
+		printf("平局\n");
+	}
+}
 
 //初始化棋盘 棋子位置都为空格
 void Initboard(char board[ROW][COL], int row, int col)
@@ -53,6 +100,7 @@ void PlayerMove(char board[ROW][COL], int row, int col)//玩家下棋
 	{
 		printf("请输入坐标>：");//玩家输入1~ROW；1~COL对应数组底标row-1；col-1
 		scanf("%d %d", &x, &y);
+		getchar();
 		if (((x >= 1) && (x <= row)) && ((y >= 1) && (y <= col)))
 		{
 			if (board[x-1][y-1]==' ')

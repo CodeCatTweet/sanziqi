@@ -1,11 +1,16 @@
 #pragma once
 
-#define _CRT_SECURE_NO_WARNINGS 
+#define _CRT_SECURE_NO_WARNINGS 1
 
 #include<stdio.h>
+#include<stdlib.h>
 #include<time.h>
 #define ROW 3
 #define COL 3
+
+void menu();
+
+void game();
 
 void Initboard(char board[ROW][COL], int row, int col);//初始化棋盘 棋子位置都为空格
 
